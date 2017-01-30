@@ -90,48 +90,48 @@ $(window).load(function() {
     "use strict";
 
 
-docReady( function() {
-  // init Isotope
-  var iso = new Isotope( '#isotopeGrid', {
-    itemSelector: '.grid-item',
-    gutter: 10
-  });
+// docReady( function() {
+//   // init Isotope
+//   var iso = new Isotope( '#isotopeGrid', {
+//     itemSelector: '.grid-item',
+//     gutter: 10
+//   });
 
-  // filter functions
-  var filterFns = {
-    // show if number is greater than 50
-    numberGreaterThan50: function( itemElem ) {
-      var number = getText( itemElem.querySelector('.number') );
-      return parseInt( number, 10 ) > 50;
-    },
-    // show if name ends with -ium
-    ium: function( itemElem ) {
-      var name = getText( itemElem.querySelector('.name') );
-      return name.match( /ium$/ );
-    }
-  };
+//   // filter functions
+//   var filterFns = {
+//     // show if number is greater than 50
+//     numberGreaterThan50: function( itemElem ) {
+//       var number = getText( itemElem.querySelector('.number') );
+//       return parseInt( number, 10 ) > 50;
+//     },
+//     // show if name ends with -ium
+//     ium: function( itemElem ) {
+//       var name = getText( itemElem.querySelector('.name') );
+//       return name.match( /ium$/ );
+//     }
+//   };
 
-  // bind filter button click
-  var filtersElem = document.querySelector('.filters');
-  eventie.bind( filtersElem, 'click', function( event ) {
-    // only work with buttons
-    if ( !matchesSelector( event.target, '.filter' ) ) {
-      return;
-    }
-    var filterValue = event.target.getAttribute('data-filter');
-    // use matching filter function
-    filterValue = filterFns[ filterValue ] || filterValue;
-    iso.arrange({ filter: filterValue });
-  });
+//   // bind filter button click
+//   var filtersElem = document.querySelector('.filters');
+//   eventie.bind( filtersElem, 'click', function( event ) {
+//     // only work with buttons
+//     if ( !matchesSelector( event.target, '.filter' ) ) {
+//       return;
+//     }
+//     var filterValue = event.target.getAttribute('data-filter');
+//     // use matching filter function
+//     filterValue = filterFns[ filterValue ] || filterValue;
+//     iso.arrange({ filter: filterValue });
+//   });
 
-  // change is-checked class on buttons
-  var buttonGroups = document.querySelectorAll('.filters-group');
-  for ( var i=0, len = buttonGroups.length; i < len; i++ ) {
-    var buttonGroup = buttonGroups[i];
-    radioButtonGroup( buttonGroup );
-  }
+//   // change is-checked class on buttons
+//   var buttonGroups = document.querySelectorAll('.filters-group');
+//   for ( var i=0, len = buttonGroups.length; i < len; i++ ) {
+//     var buttonGroup = buttonGroups[i];
+//     radioButtonGroup( buttonGroup );
+//   }
 
-});
+// });
 
 function radioButtonGroup( buttonGroup ) {
   eventie.bind( buttonGroup, 'click', function( event ) {
